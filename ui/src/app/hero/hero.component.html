@@ -1,3 +1,65 @@
-<!DOCTYPE html>
-<!--[if lt IE 10]> <html class="oldie" lang="en"> <![endif]-->
-<!--[if gte IE 10]><!-->
+<div id="hero-main">
+    <div class="container hero-main-heading">
+        <div class="row hero-heading-row">
+            <div class="col-1 hero-head-col">
+                <h6 class="hero-head">#</h6>
+            </div>
+            <div class="col hero-head-col">
+                <h6 class="hero-head">Name</h6>
+            </div>
+            <div class="col hero-head-col">
+                <h6 class="hero-head">Power</h6>
+            </div>
+            <div class="col hero-head-col">
+                <h6 class="hero-head">weakness</h6>
+            </div>
+            <div class="col hero-head-col">
+                <h6 class="hero-head">info</h6>
+            </div>
+        </div>
+    </div>
+    <div class="container hero-main-body">
+        <div class="hero-each-row" *ngFor="let box of box">
+            <div class="row hero-main-row">
+                <div class="col-1 hero-info-col">
+    <!--                {{heroes.id}}-->
+                    <p class="hero-info">100</p>
+                </div>
+                <div class="col hero-info-col">
+    <!--                {{heroes.name}}-->
+                    <p class="hero-info">dasfasdfaf</p>
+                </div>
+                <div class="col hero-info-col">
+    <!--                {{heroes.power}}-->
+                    <p class="hero-info">adfasdfasg</p>
+                </div>
+                <div class="col hero-info-col">
+    <!--                {{heroes.weakness}}-->
+                    <p class="hero-info">dfasdf</p>
+                </div>
+                <div class="col hero-info-col">
+    <!--                {{heroes.info}}-->
+                    <p class="hero-info">dsfasdfasd</p>
+                </div>
+                <!--  <div class="col">{{(heroes.info.length>10)? (heroes.info | slice:0:10)+'..':(heroes.info)}}</div>-->
+            </div>
+
+    <!--         *ngIf="editHero"       -->
+            <div class="row hero-main-overlay">
+                <div class="container">
+                    <div class="row hero-edit">
+                        <div class="col btn-1">
+                            <button class="btn btn-info"><a class ="hero-edit-anchor" href="custom-hero">Edit</a></button>
+                        </div>
+                        <div class="col btn-2">
+                            <button class="btn btn-danger"><a class ="hero-edit-anchor" href="delete">Delete</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="add-hero">
+        <button class="btn btn-success"><a class ="hero-edit-anchor" href="custom-hero">Add</a></button>
+    </div>
+</div>

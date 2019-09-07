@@ -1,0 +1,70 @@
+#hero-main{
+    width: 80%;
+    margin: auto;
+}
+.hero-main-heading{
+    background: #343a40;
+    font-weight: bold;
+    color: white;
+}
+.hero-heading-row{
+    /*padding: 15px 10px 10px;*/
+    padding-top: 15px;
+    margin-bottom: 5px;
+}
+.hero-head-col, .hero-info-col{
+    padding: 0!important;
+}
+.hero-head{
+    font-size: 90% !important;
+    text-align: center;
+}
+.hero-each-row{
+    position: relative !important;
+    margin-bottom: 5px;
+}
+.hero-info-col{
+    padding: 0!important;
+    margin-right: 5px !important;
+    font-size: 90% !important;
+    text-align: center;
+}
+.hero-info{
+    /*margin-top: 5% !important;*/
+}
+.hero-main-overlay{
+    position: absolute !important;
+    display: block !important;
+    top: 0;
+}
+
+.hero-edit{
+    /*width: 40% !important;*/
+    float: right;
+    right: 0;
+    text-align: center;
+    padding: 5px 0;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-1, .btn-2{
+    height: 20% !important;
+    font-size: 80% !important;
+    margin-right: 5px;
+    padding: 0 !important;
+}
+
+.btn-info, .btn-danger, .btn-success{
+    height: 20% !important;
+    font-size: 80% !important;
+}
+
+.hero-edit-anchor{
+    text-decoration: none;
+    color: white;
+}
+.add-hero{
+    width: 50px;
+    margin: 0 auto;
+}

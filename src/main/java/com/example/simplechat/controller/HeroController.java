@@ -15,41 +15,40 @@ import java.util.Base64;
 @RestController
 public class HeroController {
 
-    private List<Hero> heroes = createList();
+    private List<Hero> heroes = new ArrayList<>();
     List<String> tempCred = new ArrayList();
-    List<String> prevCred = new ArrayList<>();
     String dataFromAng = "";
 
     private String path = "src/main/resources/assets/cred.txt";
     int count = 0;
 
 
-    @PostMapping("hero/{id}")
-    public List<String> createHero(@PathVariable("id") String id, @RequestBody List<String> post) {
-        tempCred = post;
-        return tempCred;
-    }
-
-
-    @RequestMapping(value = "/hero", produces = "application/assets")
-    private List<Hero> showHero(){
+    @PostMapping("add-hero")
+    public Hero createHero(@RequestBody Hero heroes) {
+        this.heroes.add(heroes);
         return heroes;
     }
 
-    private static List<Hero> createList() {
+
+    @GetMapping(value = "/hero")
+    private List<Hero> showHero(){
+        return this.heroes;
+    }
+
+    private static List<Hero> createList(String name, String power, String weakness, String info) {
         List<Hero> tempHero = new ArrayList<>();
         Hero hero = new Hero();
         hero.setId(1L);
-        hero.setInfo("url");
-        hero.setName("name");
-        hero.setPower("power");
-        hero.setWeakness("weakness");
+        hero.setInfo(name);
+        hero.setName(power);
+        hero.setPower(weakness);
+        hero.setWeakness(info);
         tempHero.add(hero);
         return tempHero;
     }
 
-    @PutMapping("hero/{id}")
-    public List<String> updateCred(@PathVariable("id") String id, @RequestBody List<String> post) {
+    @PutMapping("hero/pass-cred")
+    public List<String> updateCred(@RequestBody List<String> post) {
         tempCred = post;
         return tempCred;
     }
@@ -95,9 +94,8 @@ public class HeroController {
         }
     }
 
-
-    @PostMapping("send-to-java/{id}")
-    public void catchCred(@PathVariable("id") String id, @RequestBody String post) {
+    @PostMapping("send-to-java")
+    public void catchCred(@RequestBody String post) {
         dataFromAng = post;
     }
 
@@ -142,10 +140,7 @@ public class HeroController {
                 break;
             }
         }
-
-        System.out.println("sentVal Bfr: " + result);
         result = "" + (Integer.parseInt(result)/2);
-        System.out.println("sentVal Aft: " + result);
         return result;
     }
 }
