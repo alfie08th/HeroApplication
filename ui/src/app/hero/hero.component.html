@@ -19,32 +19,24 @@
         </div>
     </div>
     <div class="container hero-main-body">
-        <div class="hero-each-row" *ngFor="let box of box">
+        <div class="hero-each-row" *ngFor="let hero of this.heroes">
+
             <div class="row hero-main-row">
-                <div class="col-1 hero-info-col">
-    <!--                {{heroes.id}}-->
-                    <p class="hero-info">100</p>
-                </div>
-                <div class="col hero-info-col">
-    <!--                {{heroes.name}}-->
-                    <p class="hero-info">dasfasdfaf</p>
-                </div>
-                <div class="col hero-info-col">
-    <!--                {{heroes.power}}-->
-                    <p class="hero-info">adfasdfasg</p>
-                </div>
-                <div class="col hero-info-col">
-    <!--                {{heroes.weakness}}-->
-                    <p class="hero-info">dfasdf</p>
-                </div>
-                <div class="col hero-info-col">
-    <!--                {{heroes.info}}-->
-                    <p class="hero-info">dsfasdfasd</p>
-                </div>
-                <!--  <div class="col">{{(heroes.info.length>10)? (heroes.info | slice:0:10)+'..':(heroes.info)}}</div>-->
+                <div class="col-1 hero-info-col"><p class="hero-info">{{heroes.id}}</p></div>
+                <div class="col hero-info-col"><p class="hero-info">{{heroes.name}}</p></div>
+                <div class="col hero-info-col"><p class="hero-info">{{heroes.power}}</p></div>
+                <div class="col hero-info-col"><p class="hero-info">{{heroes.weakness}}</p></div>
+                <div class="col hero-info-col"><p class="hero-info">{{heroes.info}}</p></div>
             </div>
 
-    <!--         *ngIf="editHero"       -->
+<!--            <div class="row hero-main-row">-->
+<!--                <div class="col-1 hero-info-col"><p class="hero-info">100</p></div>-->
+<!--                <div class="col hero-info-col"><p class="hero-info">fafjlkdjflas</p></div>-->
+<!--                <div class="col hero-info-col"><p class="hero-info">fadsfwqeffsdaf</p></div>-->
+<!--                    <div class="col hero-info-col"><p class="hero-info">2idkdsnfnaslk</p></div>-->
+<!--                <div class="col hero-info-col"><p class="hero-info">f2lkjadksnfla</p></div>-->
+<!--            </div>-->
+
             <div class="row hero-main-overlay">
                 <div class="container">
                     <div class="row hero-edit">

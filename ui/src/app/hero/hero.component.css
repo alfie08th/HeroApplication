@@ -10,7 +10,6 @@
 .hero-heading-row{
     /*padding: 15px 10px 10px;*/
     padding-top: 15px;
-    margin-bottom: 5px;
 }
 .hero-head-col, .hero-info-col{
     padding: 0!important;
@@ -19,9 +18,10 @@
     font-size: 90% !important;
     text-align: center;
 }
+
 .hero-each-row{
     position: relative !important;
-    margin-bottom: 5px;
+    top: 0 !important;
 }
 .hero-info-col{
     padding: 0!important;
@@ -39,32 +39,30 @@
 }
 
 .hero-edit{
-    /*width: 40% !important;*/
     float: right;
     right: 0;
     text-align: center;
-    padding: 5px 0;
-    color: white;
-    font-weight: bold;
 }
 
 .btn-1, .btn-2{
     height: 20% !important;
     font-size: 80% !important;
-    margin-right: 5px;
-    padding: 0 !important;
 }
 
 .btn-info, .btn-danger, .btn-success{
     height: 20% !important;
-    font-size: 80% !important;
+    /*border: 0.5px solid rgba(255,255,255,0.5) !important;*/
+    padding: 2px 10px !important;
+    /*margin-top: 50%;*/
 }
 
 .hero-edit-anchor{
     text-decoration: none;
     color: white;
+    font-size: 80% !important;
 }
 .add-hero{
     width: 50px;
     margin: 0 auto;
+    margin-top: 5% !important;
 }

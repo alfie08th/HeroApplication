@@ -10,7 +10,6 @@ export class HeroComponent implements OnInit {
 
   constructor(private httpClient: HttpClientService, private elem: ElementRef) { }
   heroes: Heroes;
-  editHero: boolean;
   box: any;
   n: number;
 
@@ -21,6 +20,14 @@ export class HeroComponent implements OnInit {
     for(let i=0; i<3; i++){
       this.box[i] = {id: i, name: Math.random()};
     }
+    this.displayAllHeroes();
+  }
+
+  displayAllHeroes(){
+    this.httpClient.getAllHeroes().subscribe(data=>{
+      this.heroes = data[data.length-1];
+      console.log('heroes: ', this.heroes)
+    }, e=>{});
   }
 
   ngAfterViewInit(){
@@ -45,6 +52,11 @@ export class HeroComponent implements OnInit {
       heroMainOverlay[c].style.height = screenHeight;
       heroMainRow[c].style.height = screenHeight;
 
+      // heroEdit[c].style.background = 'orange';
+      let infoMarginTop = (window.innerHeight*0.07)*0.15+ 'px';
+      heroEdit[c].style.marginTop = infoMarginTop
+
+
       let heroMainRowWidth = heroMainRow[c].getBoundingClientRect().width;
 
       let color = ['pink', 'lightgreen', 'dodgerblue'];
@@ -55,6 +67,8 @@ export class HeroComponent implements OnInit {
       for (let j = 0; j < heroHeading.length; j++) {
         let headSize = heroHeading[j].getBoundingClientRect().width;
         heroInfo[this.n].style.width = headSize + "px !important";
+        heroInfo[this.n].style.marginTop = infoMarginTop;
+        heroInfo[this.n].style.paddingTop = infoMarginTop;
 
         let infoWordCount = heroInfo[this.n].innerHTML.length;
         let headingWordCount = heroHeading[j].innerHTML.length;
@@ -87,10 +101,6 @@ export class HeroComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     window.location.reload();
-  }
-
-  displayAllHeroes(){
-    this.httpClient.getAllHeroes().subscribe(data=>{this.heroes = data;}, e=>{});
   }
 
 }
