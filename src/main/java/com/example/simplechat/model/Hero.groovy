@@ -2,6 +2,7 @@ package com.example.simplechat.model
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -9,16 +10,22 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name="HERO")
+@Table(name="hero")
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Hero {
+class Hero implements Serializable {
+
+    private static final  long  serialVersionUID = -3009157732242241606L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
+
+    @Column(name="name")
     private String name;
+    @Column(name="power")
     private String power;
+    @Column(name="weakness")
     private String weakness;
+    @Column(name="info")
     private String info;
 
     Long getId() {

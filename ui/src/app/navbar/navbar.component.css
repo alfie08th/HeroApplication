@@ -3,37 +3,19 @@
   margin: 0 auto;
 }
 
-#main-navbar{
+.hero-container-nav {
   height: 45px;
   width: 100%;
-  margin-top: 15px;
-  margin-bottom: 45px;
-  border-radius: 5px;
-}
-
-.bg-light {
-  height: 45px;
-  width: 100%;
+  margin: 5% 0% !important;
   background: rgb(0,51,102)!important;
-  border-radius: 5px;
+}
+.hero-head{
+  text-align: center;
 }
 
-#expandable-nav{
-  height: 45px;
-  width: 100%;
-}
-.navbar-nav{
-  height: 100%;
-  width: 40%;
-  margin: auto;
-  justify-content: center;
-}
-
-.nav-link{
-  margin: 0 15px 0 15px;
-}
 #hero-link, #home-link, #login-link{
   color: white;
+  font-size: 90% !important;
 }
 #hero-link:hover, #home-link:hover, #login-link:hover{
   color: rgba(255,255,255,0.95);

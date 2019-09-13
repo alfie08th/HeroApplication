@@ -11,7 +11,7 @@
     /*padding: 15px 10px 10px;*/
     padding-top: 15px;
 }
-.hero-head-col, .hero-info-col{
+.hero-col, .hero-info-col{
     padding: 0!important;
 }
 .hero-head{
@@ -30,12 +30,18 @@
     text-align: center;
 }
 .hero-info{
-    /*margin-top: 5% !important;*/
+
 }
+
 .hero-main-overlay{
     position: absolute !important;
     display: block !important;
     top: 0;
+    opacity: 0;
+}
+.hero-main-overlay:hover{
+    opacity: 1;
+    background: rgba(0,0,0,0.5);
 }
 
 .hero-edit{

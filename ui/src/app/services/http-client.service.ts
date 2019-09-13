@@ -39,4 +39,8 @@ export class HttpClientService {
     return this.httpClient.get('http://localhost:8080/hero');
   }
 
+  deleteHero(hero, id){
+    return this.httpClient.delete<Heroes>('http://localhost:8080/delete-hero/' + id,{});
+  }
+
 }

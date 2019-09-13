@@ -1,6 +1,9 @@
 package com.example.simplechat.controller;
 
 import com.example.simplechat.model.Hero;
+import com.example.simplechat.repositories.HeroRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
@@ -22,29 +25,12 @@ public class HeroController {
     private String path = "src/main/resources/assets/cred.txt";
     int count = 0;
 
+    @Autowired
+    HeroRepository repository;
 
-    @PostMapping("add-hero")
-    public Hero createHero(@RequestBody Hero heroes) {
-        this.heroes.add(heroes);
-        return heroes;
-    }
+    @GetMapping("save")
+    public void saveData(){
 
-
-    @GetMapping(value = "/hero")
-    private List<Hero> showHero(){
-        return this.heroes;
-    }
-
-    private static List<Hero> createList(String name, String power, String weakness, String info) {
-        List<Hero> tempHero = new ArrayList<>();
-        Hero hero = new Hero();
-        hero.setId(1L);
-        hero.setInfo(name);
-        hero.setName(power);
-        hero.setPower(weakness);
-        hero.setWeakness(info);
-        tempHero.add(hero);
-        return tempHero;
     }
 
     @PutMapping("hero/pass-cred")
@@ -107,8 +93,8 @@ public class HeroController {
     private String getHttpResponse(){
         StringBuffer response = new StringBuffer();
         try {
-			String url = "http://localhost:8080/data-sent-to-java";
-			URL obj = new URL(url);
+            String url = "http://localhost:8080/data-sent-to-java";
+            URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             int responseCode = con.getResponseCode();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -142,5 +128,26 @@ public class HeroController {
         }
         result = "" + (Integer.parseInt(result)/2);
         return result;
+    }
+
+
+    @PostMapping("add-hero")
+    public Hero createHero(@RequestBody Hero heroes) {
+        this.heroes.add(heroes);
+        return heroes;
+    }
+
+
+    @GetMapping(value = "/hero", produces = "application/json")
+    private List<Hero> showHero(){
+        return this.heroes;
+    }
+
+    @DeleteMapping(value = "delete-hero/{id}")
+    public Hero deleteHero(@PathVariable("id") int id){
+        System.out.print("at index " + id + ", heroes[" + (id-1) + "] :");
+//        System.out.println(heroes.get(id-1));
+        this.heroes.remove(heroes.get(id-1));
+        return null;
     }
 }

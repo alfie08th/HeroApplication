@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Heroes, HttpClientService} from "../services/http-client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-customhero',
@@ -8,7 +9,7 @@ import {Heroes, HttpClientService} from "../services/http-client.service";
 })
 export class CustomheroComponent implements OnInit {
 
-  constructor(private httpClient: HttpClientService) { }
+  constructor(private httpClient: HttpClientService, private route: Router) { }
   hero: Heroes = new Heroes(0, "", "", "", "");
   count: number;
 
@@ -27,6 +28,8 @@ export class CustomheroComponent implements OnInit {
     this.count = Number(objectId);
     this.count++;
     localStorage.setItem('count', (''+this.count));
+    this.route.navigateByUrl('hero').then(r => {});
+    // window.location.replace('http://localhost:4200/hero');
   }
 
   viewAll(){
