@@ -1,7 +1,8 @@
-#custom-hero-main{
+.custom-hero-main{
   width: 60%;
   height: 500px;
   margin: 0 auto;
+  display: block;
 }
 #custom-hero-left{
   width: 40%;
@@ -15,4 +16,11 @@
   float: left;
   border-radius: 5px;
   background: darkcyan;
+}
+.loading-spinner{
+  width: 60%;
+  height:  80px;
+  margin: 0 auto !important;
+  text-align: center;
+  display: none;
 }

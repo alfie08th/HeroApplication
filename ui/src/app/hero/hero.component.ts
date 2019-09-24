@@ -12,6 +12,8 @@ export class HeroComponent implements OnInit, AfterViewInit {
   constructor(private httpClient: HttpClientService, private elem: ElementRef, private route: Router) { }
   heroes:Heroes[];
   cell:number;
+  row: number;
+  editMode: boolean;
 
   ngOnInit() {
     this.cell = 0;
@@ -24,7 +26,19 @@ export class HeroComponent implements OnInit, AfterViewInit {
     }, e=>{});
   }
 
+  editHeroDetail(){
+    localStorage.setItem('id', ('' + this.row));
+    localStorage.setItem('name', this.heroes[this.row].name);
+    localStorage.setItem('power', this.heroes[this.row].power);
+    localStorage.setItem('weakness', this.heroes[this.row].weakness);
+    localStorage.setItem('info', this.heroes[this.row].info);
+    localStorage.setItem('editMode', true.toString());
+
+    this.route.navigateByUrl('custom-hero').then(r=>{});
+  }
+
   addHeroes(){
+    localStorage.setItem('editMode', false.toString());
     this.route.navigateByUrl("custom-hero").then(r=>{});
   }
 
@@ -47,7 +61,6 @@ export class HeroComponent implements OnInit, AfterViewInit {
 
 
   showDisplay(){
-
     let heroMainRow = this.elem.nativeElement.getElementsByClassName('hero-main-row');
     let heroMainOverlay = this.elem.nativeElement.getElementsByClassName('hero-main-overlay');
     let heroEachRow = this.elem.nativeElement.getElementsByClassName('hero-each-row');
@@ -65,6 +78,9 @@ export class HeroComponent implements OnInit, AfterViewInit {
       heroMainRow[row].style.height = screenHeight;
 
       heroEdit[row].style.marginTop = infoMarginTop;
+      heroEdit[row].addEventListener('mousedown', ()=>{
+        this.row = row;
+      });
 
       let heroMainRowWidth = heroMainRow[row].getBoundingClientRect().width;
       heroMainOverlay[row].style.width = heroMainRowWidth + 'px';

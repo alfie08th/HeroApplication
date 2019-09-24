@@ -1,0 +1,28 @@
+#inflation-main{
+    width: 60%;
+    height: 500px;
+    margin: 0 auto;
+}
+#convert-loop-img{
+    width: 20px !important;
+    height: 20px !important;
+}
+#convert-btn{
+    background: none;
+    border: none;
+}
+.scrollable-menu{
+    height: auto;
+    max-height: 100px;
+    width: auto;
+    max-width: 100px;
+    overflow-x: hidden;
+    background: mediumpurple;
+    list-style-type:none;
+    text-align: left;
+    padding-left: 10px!important;
+}
+a{
+    text-decoration: none
+
+}

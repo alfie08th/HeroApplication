@@ -31,12 +31,15 @@ export class HttpClientService {
   }
 
   createHeroes(hero){
-    console.log('heroes: ', hero)
     return this.httpClient.post<Heroes>("http://localhost:8080/add-hero", hero);
   }
 
   getAllHeroes():Observable<any>{
     return this.httpClient.get('http://localhost:8080/hero');
+  }
+
+  editHero(hero, id){
+    return this.httpClient.put<Heroes>('http://localhost:8080/edit-hero/' + id, hero);
   }
 
   deleteHero(hero, id){

@@ -12,7 +12,7 @@ import javax.persistence.Table
 @Entity
 @Table(name="hero")
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Hero implements Serializable {
+class Hero {
 
     private static final  long  serialVersionUID = -3009157732242241606L;
     @Id

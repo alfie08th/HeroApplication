@@ -1,11 +1,13 @@
 package com.example.simplechat.controller;
 
 import com.example.simplechat.model.Hero;
-import com.example.simplechat.repositories.HeroRepository;
+//import com.example.simplechat.repositories.HeroRepository;
+import com.example.simplechat.services.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -26,12 +28,18 @@ public class HeroController {
     int count = 0;
 
     @Autowired
-    HeroRepository repository;
+    HeroService heroService;
 
-    @GetMapping("save")
-    public void saveData(){
-
+    @GetMapping("find")
+    public List<Hero> findData(){
+        return heroService.getAllHeroes();
     }
+
+//    @PostMapping(value = "save")
+//    public void saveData(@RequestBody final Hero hero){
+//        repository.save(hero);
+//
+//     }
 
     @PutMapping("hero/pass-cred")
     public List<String> updateCred(@RequestBody List<String> post) {
@@ -145,9 +153,18 @@ public class HeroController {
 
     @DeleteMapping(value = "delete-hero/{id}")
     public Hero deleteHero(@PathVariable("id") int id){
-        System.out.print("at index " + id + ", heroes[" + (id-1) + "] :");
-//        System.out.println(heroes.get(id-1));
+//        System.out.print("at index " + id + ", heroes[" + (id-1) + "] :");
         this.heroes.remove(heroes.get(id-1));
+        return null;
+    }
+
+    @PutMapping(value = "edit-hero/{id}")
+    public Hero EditHero(@PathVariable("id") int id, @Valid @RequestBody Hero Heroes){
+        this.heroes.get(id-1).setId(Heroes.getId());
+        this.heroes.get(id-1).setName(Heroes.getName());
+        this.heroes.get(id-1).setPower(Heroes.getPower());
+        this.heroes.get(id-1).setWeakness(Heroes.getWeakness());
+        this.heroes.get(id-1).setInfo(Heroes.getInfo());
         return null;
     }
 }
