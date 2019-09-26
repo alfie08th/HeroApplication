@@ -1,0 +1,27 @@
+<div id="login-div">
+  <h4 id="message-head">{{message}}</h4>
+  <div id="login-welcome">
+    <h1>Welcome To Login</h1>
+    <form id="login-form">
+      <div class="form-group boot-login">
+        <label id="uname" >Username</label>
+        <input type="text" class="form-control" name="username" placeholder="User Name" [(ngModel)]="username">
+
+        <label id="password">Password</label>
+        <input type="text" class="form-control"  name="password" placeholder="Password" [(ngModel)]="password">
+
+        <input type="submit" (click) = "checkLogin()" class ='btn btn-success login-value' value="Submit">
+      </div>
+    </form>
+    <div id="data-send-stat">
+      <label id="sending-id" *ngIf="dataSending">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        sending data to the server
+      </label>
+
+      <small *ngIf="dataSent">
+        server just received the data, and sends this response 'Yah!'
+      </small>
+    </div>
+  </div>
+</div>

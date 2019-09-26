@@ -1,0 +1,23 @@
+#login-div{
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+#login-welcome{
+  padding-top: 50px;
+  width: 250px;
+  margin: 0 auto;
+}
+#message-head{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login-value, .boot-login{
+  margin-top: 50px;
+}
+#password{
+  margin-top: 20px;
+}

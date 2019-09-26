@@ -1,0 +1,22 @@
+#nav-bar-div{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.hero-container-nav {
+  height: 45px;
+  width: 100%;
+  margin: 5% 0% !important;
+  background: rgb(0,51,102)!important;
+}
+.hero-head{
+  text-align: center;
+}
+
+#hero-link, #home-link, #login-link{
+  color: white;
+  font-size: 90% !important;
+}
+#hero-link:hover, #home-link:hover, #login-link:hover{
+  color: rgba(255,255,255,0.95);
+}
