@@ -44,7 +44,6 @@ export class HeroComponent implements OnInit, AfterViewInit {
 
   deleteHeroes(hero: Heroes): void{
     let heroLength = this.heroes.length;
-    console.log('hero.length:', this.heroes.length);
     this.httpClient.deleteHero(hero, heroLength).subscribe(data=>{
       this.heroes = this.heroes.filter(u=> u !==hero);
     }, e=>{});

@@ -18,8 +18,7 @@ export class CustomheroComponent implements OnInit, AfterViewInit {
   objectId: number;
 
   ngOnInit() {
-     this.setInputValue();
-
+    this.setInputValue();
     this.addMode = true;
     this.count = 0;
     this.objectId = Number(localStorage.getItem('count'));
@@ -28,7 +27,7 @@ export class CustomheroComponent implements OnInit, AfterViewInit {
     }else{
       this.httpClient.getAllHeroes().subscribe(data=>{
         this.count = data.length;
-        localStorage.setItem('count', ('' +  this.count+1));
+        localStorage.setItem('count', (this.count).toString());
       }, e => {e});
 
     }
@@ -37,7 +36,6 @@ export class CustomheroComponent implements OnInit, AfterViewInit {
       this.editMode = true;
       this.addMode = false;
     }
-    console.log(editOption);
   }
   ngAfterViewInit() {
     this.setInputValue();
@@ -57,28 +55,21 @@ export class CustomheroComponent implements OnInit, AfterViewInit {
   }
 
   editHero(){
-
+    this.hero.id = Number(localStorage.getItem('id'))+1;
     this.httpClient.editHero(this.hero, this.hero.id).subscribe(data=>{}, e=>{e});
+    this.displayLoad();
   }
 
   createHero():void{
-    let heroMainDiv = this.elem.nativeElement.getElementsByClassName('custom-hero-main');
-    heroMainDiv[0].style.display = 'none';
 
-    let loadingSpinner = this.elem.nativeElement.getElementsByClassName('loading-spinner');
 
-    this.hero.id = Number(localStorage.getItem('count'));
+    this.count++;
+    localStorage.setItem('id', (this.count).toString());
+
+    this.hero.id = this.count;
     this.httpClient.createHeroes(this.hero).subscribe(data=>{}, e=>{});
 
-    this.count = this.hero.id;
-
-    console.log('id on createHero', this.hero.id);
-    this.count++;
-
-    loadingSpinner[0].style.display = 'block';
-    setTimeout(()=>{
-      this.route.navigateByUrl('hero').then(r => {});
-    }, 1000);
+    this.displayLoad();
   }
 
   setInputValue(){
@@ -87,7 +78,17 @@ export class CustomheroComponent implements OnInit, AfterViewInit {
     this.heroAmend.power = localStorage.getItem('power');
     this.heroAmend.weakness = localStorage.getItem('weakness');
     this.heroAmend.info = localStorage.getItem('info');
-
   }
 
+
+  displayLoad(){
+    let heroMainDiv = this.elem.nativeElement.getElementsByClassName('custom-hero-main');
+    heroMainDiv[0].style.display = 'none';
+
+    let loadingSpinner = this.elem.nativeElement.getElementsByClassName('loading-spinner');
+    loadingSpinner[0].style.display = 'block';
+    setTimeout(()=>{
+      this.route.navigateByUrl('hero').then(r => {});
+    }, 1000);
+  }
 }

@@ -1,20 +1,24 @@
 package com.example.simplechat.controller;
 
 import com.example.simplechat.model.Hero;
-//import com.example.simplechat.repositories.HeroRepository;
 import com.example.simplechat.services.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
+
+//import com.example.simplechat.repositories.HeroRepository;
 
 @CrossOrigin(origins = "https://localhost:4200")
 @RestController
@@ -159,12 +163,12 @@ public class HeroController {
     }
 
     @PutMapping(value = "edit-hero/{id}")
-    public Hero EditHero(@PathVariable("id") int id, @Valid @RequestBody Hero Heroes){
-        this.heroes.get(id-1).setId(Heroes.getId());
-        this.heroes.get(id-1).setName(Heroes.getName());
-        this.heroes.get(id-1).setPower(Heroes.getPower());
-        this.heroes.get(id-1).setWeakness(Heroes.getWeakness());
-        this.heroes.get(id-1).setInfo(Heroes.getInfo());
+    public Hero EditHero(@PathVariable("id") int id, @Valid @RequestBody Hero heroes){
+        this.heroes.get(id-1).setId(heroes.getId());
+        this.heroes.get(id-1).setName(heroes.getName());
+        this.heroes.get(id-1).setPower(heroes.getPower());
+        this.heroes.get(id-1).setWeakness(heroes.getWeakness());
+        this.heroes.get(id-1).setInfo(heroes.getInfo());
         return null;
     }
 }

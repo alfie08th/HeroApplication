@@ -39,7 +39,7 @@ export class HttpClientService {
   }
 
   editHero(hero, id){
-    return this.httpClient.put<Heroes>('http://localhost:8080/edit-hero/' + id, hero);
+    return this.httpClient.put<Heroes>(`http://localhost:8080/edit-hero/${id}`, hero);
   }
 
   deleteHero(hero, id){
