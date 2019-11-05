@@ -25,11 +25,9 @@ public class SimplechatApplicationTests {
 
 //	@Test
 	public void contextLoads() throws Exception {
-//		String url = "https://serpapi.com/playground?engine=google&q=jessica+bangkok+xxx&google_domain=google.com&ijn=0&tbm=isch";
 
-//		String url = "https://www.google.com/search?q=" + "jessica+bangkok" + "&client=safari&rls=en&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjRtprqrKnkAhWmd98KHXaCBRUQ_AUIEigC";
 		String result = "";
-		String url = "http://www.pornpics.com/?q=jessica+bangkok";
+		String url = "http://www.google.com";
 
 		HttpURLConnection c;
 		try {

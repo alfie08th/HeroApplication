@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-//import com.example.simplechat.repositories.HeroRepository;
-
 @CrossOrigin(origins = "https://localhost:4200")
 @RestController
 public class HeroController {
@@ -141,7 +139,6 @@ public class HeroController {
         result = "" + (Integer.parseInt(result)/2);
         return result;
     }
-
 
     @PostMapping("add-hero")
     public Hero createHero(@RequestBody Hero heroes) {
